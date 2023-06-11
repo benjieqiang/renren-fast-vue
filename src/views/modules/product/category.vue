@@ -1,56 +1,61 @@
+<!--
+ * @Author: benjie
+ * @Date: 2023-06-11 13:02:17
+ * @LastEditTime: 2023-06-11 15:21:44
+ * @LastEditors: benjie
+ * @Description: 
+-->
 <template lang="">
-    <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+    <el-tree :data="menus" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
 </template>
 <script>
 export default {
     data() {
       return {
-        data: [{
-          label: '一级 1',
-          children: [{
-            label: '二级 1-1',
-            children: [{
-              label: '三级 1-1-1'
-            }]
-          }]
-        }, {
-          label: '一级 2',
-          children: [{
-            label: '二级 2-1',
-            children: [{
-              label: '三级 2-1-1'
-            }]
-          }, {
-            label: '二级 2-2',
-            children: [{
-              label: '三级 2-2-1'
-            }]
-          }]
-        }, {
-          label: '一级 3',
-          children: [{
-            label: '二级 3-1',
-            children: [{
-              label: '三级 3-1-1'
-            }]
-          }, {
-            label: '二级 3-2',
-            children: [{
-              label: '三级 3-2-1'
-            }]
-          }]
-        }],
+        menus: [],
         defaultProps: {
-          children: 'children',
-          label: 'label'
+          children: 'children', //子节点
+          label: 'name' //name属性作为标签的值，展示出来
         }
       };
     },
     methods: {
       handleNodeClick(data) {
         console.log(data);
+      },
+      //获取后台数据 {data}是把参数结构出来；  
+      getMenus(){
+          this.$http({
+          url: this.$http.adornUrl('/product/category/list/tree'),
+          method: 'get'
+        }).then(({data}) => {
+            console.log("成功了获取到菜单数据....", data.data);
+            this.menus = data.data;
+        })
       }
-    }
+    },
+
+
+    //监听属性 类似于data概念
+    computed: {},
+    //监控data中的数据变化
+    watch: {},
+    //生命周期 - 创建完成（可以访问当前this实例）
+    created() {
+        //创建完成时，就调用getMenus函数
+        this.getMenus();
+    },
+    //生命周期 - 挂载完成（可以访问DOM元素）
+    mounted() {
+
+    },
+    beforeCreate() {}, //生命周期 - 创建之前
+    beforeMount() {}, //生命周期 - 挂载之前
+    beforeUpdate() {}, //生命周期 - 更新之前
+    updated() {}, //生命周期 - 更新之后
+    beforeDestroy() {}, //生命周期 - 销毁之前
+    destroyed() {}, //生命周期 - 销毁完成
+    activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 
 

@@ -1,10 +1,3 @@
-/*
- * @Author: benjie
- * @Date: 2023-06-04 23:31:04
- * @LastEditTime: 2023-06-11 13:19:01
- * @LastEditors: benjie
- * @Description: 
- */
 'use strict'
 // Template version: 1.2.5
 // see http://vuejs-templates.github.io/webpack for documentation.

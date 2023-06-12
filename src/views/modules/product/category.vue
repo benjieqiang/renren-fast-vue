@@ -212,6 +212,7 @@ export default {
       }
     },
     allowDrop(draggingNode, dropNode, type) {
+      // return false; // 表示所有的都不能拖动 
       //1、被拖动的当前节点以及所在的父节点总层数不能大于3
 
       //1）、被拖动的当前节点总层数

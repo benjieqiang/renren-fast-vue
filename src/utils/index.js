@@ -12,7 +12,7 @@ export function getUUID () {
 }
 
 /**
- * 是否有权限
+ * 是否有权限, 修改让他返回true
  * @param {*} key
  */
 export function isAuth (key) {

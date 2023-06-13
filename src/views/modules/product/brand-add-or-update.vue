@@ -48,10 +48,10 @@
 </template>
 
 <script>
-// 单文件上传，
+// 单文件上传，导入组件
 import SingleUpload from "@/components/upload/singleUpload";
 export default {
-  components: { SingleUpload },
+  components: { SingleUpload }, // components:{组件名} 注册组件
   data() {
     return {
       visible: false,

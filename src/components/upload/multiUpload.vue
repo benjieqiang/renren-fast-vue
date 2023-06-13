@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-upload
-      action="http://gulimall-xmh.oss-cn-beijing.aliyuncs.com"
+      action="https://ikunmall.oss-cn-beijing.aliyuncs.com"
       :data="dataObj"
       :list-type="listType"
       :file-list="fileList"

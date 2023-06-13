@@ -196,9 +196,9 @@ export default {
     updateBrandStatus(data) {
       console.log("最新信息", data);
       let { brandId, showStatus } = data;
-      //发送请求修改状态
+      //发送请求修改状态,http://localhost:88/api/product/brand/update
       this.$http({
-        url: this.$http.adornUrl("/product/brand/update/status"),
+        url: this.$http.adornUrl("/product/brand/update"),
         method: "post",
         data: this.$http.adornData({ brandId, showStatus }, false)
       }).then(({ data }) => {

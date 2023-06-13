@@ -4,6 +4,7 @@
     :close-on-click-modal="false"
     :visible.sync="visible"
   >
+    <!-- 借用rules来 -->
     <el-form
       :model="dataForm"
       :rules="dataRule"
@@ -15,13 +16,15 @@
         <el-input v-model="dataForm.name" placeholder="品牌名"></el-input>
       </el-form-item>
       <el-form-item label="品牌logo地址" prop="logo">
+        <!-- 采用upload组件 -->
         <!-- <el-input v-model="dataForm.logo" placeholder="品牌logo地址"></el-input> -->
-        <single-upload v-model="dataForm.logo"></single-upload>
+        <SingleUpload v-model="dataForm.logo"></SingleUpload>
       </el-form-item>
       <el-form-item label="介绍" prop="descript">
         <el-input v-model="dataForm.descript" placeholder="介绍"></el-input>
       </el-form-item>
       <el-form-item label="显示状态" prop="showStatus">
+        <!-- 这里加上了Switch开关 -->
         <el-switch
           v-model="dataForm.showStatus"
           active-color="#13ce66"
@@ -45,6 +48,7 @@
 </template>
 
 <script>
+// 单文件上传，
 import SingleUpload from "@/components/upload/singleUpload";
 export default {
   components: { SingleUpload },
@@ -81,6 +85,7 @@ export default {
               if (value == "") {
                 callback(new Error("首字母必须填写"));
               } else if (!/^[a-zA-Z]$/.test(value)) {
+                // 正则不在大小写字母范围内，则报错
                 callback(new Error("首字母必须a-z或者A-Z之间"));
               } else {
                 callback();
